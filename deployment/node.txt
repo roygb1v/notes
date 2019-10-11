@@ -19,4 +19,5 @@ node -v
 # Initialize the application using npm
 npm init -y (global y flag sets default to all fields. You might want to customise some settings in package.json)
 
-
+# Install packages and save to development
+npm i <package_name> --save-dev

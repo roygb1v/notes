@@ -1,0 +1,24 @@
+# Change the endpoint url to either dev or prod
+
+# Go to settings icon and add environment
+
+# Add key value pairs
+url : localhost:3000 
+url : <name-of-server-app>:3000
+
+# Go to endpoint and change the url name
+{{url}}
+{{url}}/users (GET users endpoint)
+{{url}}/user/me (GET single profile endpoint)
+
+
+
+# Automated Javascript code to put authorization token before every request
+
+# Under Edit collection (...) -> Authorization -> Type (Bearer Token) -> Token ( {{authToken}} )
+
+# In Tests tab for Login User / Create User
+if (pm.response.code === 200) {
+	pm.environment.set('authToken', pm.response.json().token)
+}
+

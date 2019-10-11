@@ -1,0 +1,48 @@
+# Mongodb node.js driver allows us to access and connect to mongodb from nodejs
+const mongodb = require('mongodb') 
+
+Note: npm i mongodb
+
+# You can use destructuring to tease out certain functionalities
+const { MongoClient, ObjectID } = require('mongodb')
+
+Note: MongoClient gives us methods to access the database
+
+# Mongodb ObjectId is an object
+# It has an algorithm that will auto-generate for you a hash
+# Prevents id collision during heavy database writes
+
+const id = new ObjectID()
+console.log(id); 
+
+# Define connection url -> use mongodb protocol instead of https protocol
+const connectionURL = 'mongodb://127.0.0.1:27017'
+const databaseName = 'task-manager'
+
+# Connect to the database. This is an async operation.
+MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
+	if (error) {
+		return console.log('Unable to connect to the database')
+	}
+
+	// Mongodb will automatically create the database for us by using the db method and passing the databaseName as an argument of type string
+	const db = client.db(databaseName)
+
+	db.collection('users').insertOne({
+		name: 'Roy',
+		age: 27
+	}, (err, result) => {
+		if (err) {
+			return console.log('Unable to insert user')
+		}
+		console.log(result, result.ops)
+	})
+})
+
+
+
+-----------------------------------------
+Mongoose is an abstraction layer or ORM built on top of mongodb library that gives us many useful
+features such as data validation; authentication; type casting etc
+
+
