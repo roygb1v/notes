@@ -1,0 +1,24 @@
+# Git is the underlying technology behind GitHub which allows for developers to work on code in a team; pull or push code; clone to a server etc
+
+# Initialize a repository in github.com
+
+# Ensure you have a README.md file if you did not initialize it in the GUI.
+echo "# notes" >> README.md
+
+# Also initialize a git repo in your current application in your TERMINAL.
+git init
+
+# Add the README.md
+git add README.md
+git add .
+
+# Commit the changes to the branch
+git commit -m "this is my first commit"
+
+# Add the remote desktop repository to your current application in your terminal so you can push
+# I think it sort of creates a tunnel so that files can be uploaded upon a 'special' command
+git remote add origin git@github.com:<username>/<app_name.git>
+
+# push the files to the repository AKA github
+git push -u origin master
+

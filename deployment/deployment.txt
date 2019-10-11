@@ -1,0 +1,51 @@
+# Heroku (free)
+
+# Create an application name
+heroku create <application-name>
+
+# Push the files from git to heroku's server
+git push heroku master (you change the branch to master to push the files to)
+
+# Ensure your express framework's port number is bound to heroku's dyno
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+	console.log('Server is up and running on port', port)
+})
+
+
+
+
+# DigitalOcean (paid)
+
+# Point domain name to DO's server IP address
+
+# Point domain nameserver to DO's nameserver
+
+# ssh into DO's server
+ssh root@<ip_address>
+
+# create public/private RSA key between DO server and github 
+keygen...
+
+# ensure github has a copy of the RSA key initialized in your DO instance
+# You have to navigate to github settings to configure this
+
+# Clone the files from github to DO instance
+git clone <ssh-command>
+
+# Start the application in the background using a service called 'nohup' short for nohangup
+nohup node xxx.js </dev/null &>/dev/null &
+nohup ruby xxx.rb
+nohup python xxx.py
+
+Note: the xxx.ext is the entry point for which your app starts. Check package.json to see your configuration
+
+# To kill the application/nohup, find the processID and kill it
+ps -ef | grep <name_of_entry_file>
+eg: ps -ef | grep index.js
+
+kill -9 <process_id>
+
+

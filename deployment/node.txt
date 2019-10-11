@@ -1,0 +1,22 @@
+# Node.js
+# JS-based environment to create web-servers and networked applications.
+# Eg: minify JS files; compile Sass files -> CSS
+
+# What is npm ?
+# Node Package Manager that installs Node "packages" or "modules" fast and easy.
+# "Package/Module" is a code library which extends Node and has useful functionality.
+# The "request" module simplifies the process of making HTTP requests easily so you can get web resources from other sites.
+
+# NPM is installed when you install Node.
+
+# Install Node(npm). Ensure you have brew installed on your MacOS.
+brew install node
+
+# Check and test versions
+npm -v
+node -v
+
+# Initialize the application using npm
+npm init -y (global y flag sets default to all fields. You might want to customise some settings in package.json)
+
+
