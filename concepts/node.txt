@@ -1,0 +1,114 @@
+In order to pass a Javascript object from one computer to another computer,
+that object needs to be stringified because which can then be converted to binary data,
+because that is the only format that computers understand.
+
+Once the stringified object is sent from one computer to another, the receiving computer
+will then parse that stringified object into a full javascript object (or JSON).
+
+Sending Computer (JSON.stringify(obj)) ----------> Receiving Computer (JSON.parse(obj))
+
+JSON.stringify(obj);
+JSON.parse(obj);
+
+
+
+The application does not have access to your file system as it is a sercurity risk.
+However, your application can access your file storage/system through Node/C++ features.
+The file system (where you keep all your files) is in the computer internals which is
+really low level. At the level of socket and networking layer.
+
+LibUV will create a thread in the background (creating an open focused chanel between the
+computer internals and Node) and transfer the files in the file storage/system
+into Node and from Node we can access if from your app.
+
+Note: Imagine you download a file called tweets.json, where do you think the file will be
+stored in ? The file storage/system !
+
+Note: How are you able to access the downloaded file into your application ? 
+Node provides a library called fs which allows the downloaded file to be sent to your application.
+
+fs.readFile('./tweets.json', callback) 
+Remember in javascript, the above arguments does not mean anything to them ! Only Node js
+will look at the arguments and try to find the path and call the callback on the file it
+fetches from the file storage system.
+
+Note: The callback function is automatically run when the file is fully fetched from the 
+file storage system.
+
+Note: A thread is a computer's ability to do a task. It focusses on a single task at once if it is
+single threaded. (eg like listening for an incoming message which is not the purview of libus or node)
+
+Note: Libuv is in charge of openening a thread to bring the required files from the storage system to
+node js on ANY computer OS.
+
+which i/o (input/output from the computer system) in node sets up a thread dedicated within node, handled by libuv for doing that task ? (like bringing files from file storage to node)
+
+fs (node) -> through LibUV -> file storage(your file)
+
+
+function cleanTweets(tweetsToClean) {
+	// code that removes bad tweets
+}
+
+function useImportedTweets(errorData, data) {
+	const cleanedTweetsJson = cleanTweets(data);
+	const tweetsObj = JSON.parse(cleanedTweetsJson);
+	console.log(tweetsObj.tweet2)
+
+fs.readFile('./tweets.json', useImportedTweets)
+
+Note: The callback function is always an error-first pattern in which the first argument is always
+the error object/message if the fs.<method> throws an error. If no error, it defaults to null NOT undefined.
+
+Call Stack
+
+All files that come into the computer socket comes in a buffer data format(0 and 1 representation)
+In computer science, a data buffer is a region of a physical memory storage used to temporarily store
+data while it is being moved from one place to another.
+
+Five different Binaries (i.e five different sets of 1s and 0s):
+10 | 01 | 001 | 1110 | 00101011 
+
+Each number in a binary (i.e each 1 and 0 in a set is called a Bit or Binary digiT)
+
+*To store or represent a piece of data, a computer needs to convert that data to its binary representation. For example, to store the number 12, a computer needs to convert 12 to its binary representation
+which is 1100.
+
+Computers converts that using a simple binary numeral system (base-2 numeral system)
+
+Not only are numbers the only data types computers work with, computers can also work with strings, images, and even videos !
+
+Computers know how to represent all types of data in binaries.
+
+For example the character "L", the computer will first convert that character to a number then convertthat number to its binary representation. "L".charCodeAt(0) => 76
+
+The 76 returned will then be looked up on the Unicode Character set (basically a table where each number represents which character). In this case, the 76 represents "L".
+
+Just as there are rules that define what number should represent a character, there are also rules that define how that number should be represented in binaries.
+
+Specifically, how many bits to use to represent that number. This is called Character Encoding.
+
+UTF-8 (one of the definitions for Character Encoding) states that characters should be encoded as bytes.
+
+A byte is a set of eight bits (i.e eight 1s and 0s).
+
+So eight 1s and 0s is used to represent the Code Point of any character in binary.
+
+Although in the previous example, the binary representation of the number is 1100, in UTF-8, it state
+that 12 should be in eight bits so it forces the conputer to add more bits to the left side of the actual base-2 representation of the number 12 to make it a byte (therefore 12 is sored as 00001100)
+
+76 is stored as 01001100.
+
+The buffer is ususally in the RAM (it is where data are temporally gathered, waited and eventually sent out for processing during streaming)
+
+Note: Streaming is the movement of data from one point ot the other.
+
+There is usually an intent to process, read and make decisions based on the movement of data.
+
+There is a min and max amount of data a process could take over time.
+
+If the rate the data arrives is faster that the rate the process consumes the data, then the excess data will have to wait "somewhere" in order to be processed.
+
+On the other hand, if the process consumes data faster than it is received, then the incoming data will have to wait "somewhere" until the data amount is "filled" before being sent out for processing. 
+
+
