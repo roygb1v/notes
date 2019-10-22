@@ -1,0 +1,37 @@
+A computer system is divided into 4 components: Hardware, OS, Application programs, User
+
+Hardware: CPU; memory; I/O devices provides basic computing resources for the system.
+Application programs: word processes; compilers; web browsers.
+OS: controls the hardware and coordinates its use among the various application programs for its users.
+User: self-explanatory.
+
+OS provides an environment within which other programs can do useful work
+
+User view: ease of use. Some attention paid to performance but none to resource utilization (i.e how hardware and software resources are shared)
+
+Mainframe. Many users. Many terminals.
+Sharing of resources. Maximise resource utilization.
+Ensure all cpu time, memory, I/O used efficiently and no user has larger share of resources.
+
+Workstations and Servers.
+Dedicated resouces but share resources such as networking and servers(file, compute, print servers)
+
+
+
+###
+System view: OS => resource allocator.
+Manager of these resources(CPU TIME; MEMORY SPACE; FILE-STORAGE SPACE; I/O devices)
+Control program => manages execution of user programs to prevent errors and improper use of the computer.
+
+Kernel: The OS is the one program runnning at all times on the computer.
+System programs: assoc with os but not nec part of kernel.
+application programs: all prgs not assoc with the os.
+
+Middleware: a set of software frameworks that provide additional services to app devs. supports db, multimedia and graphics.
+
+Modern computer system consists of one or more CPUs and a number of device controllers connected through a common bus that provides access to shared memory.
+
+Each device controller is in charge of a specific type of device(disk drives; audio devices; video displays)
+
+ROM: read-only memory
+
