@@ -1,0 +1,24 @@
+# Run Reflaunt-admin (from IDE)
+ng serve --port 4500 --configuration=local --no-live-reload
+alias: ng servelocal
+
+# Run Reflaunt-api (from IDE)
+nodemon --exec babel-node -- bin/www
+alias: npm run devstartwindows
+
+# Restart nginx
+sudo systemctl restart nginx.service
+
+# Connect to database
+Host: localhost
+User: postgres
+Password: xxxxxx42
+Database: reflaunt ( remember to create reflaunt in db )
+
+When you first download postgresql, you will have a defualt 'postgres' user.
+Connect to db and change password using \password.
+db migration in reflaunt-api: npm run migrate (to create tables)
+In datagrip, run the script: npm run seed (to populate the tables with data)
+
+Create SSL certs and put in nginx directory
+
